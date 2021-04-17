@@ -1,0 +1,83 @@
+﻿@using Microsoft.AspNetCore.Http
+
+
+@model IEnumerable<AdmonUsuarios.FE.Models.UsuarioModel>
+
+
+@{
+    ViewData["Title"] = "Index";
+    var vPermisos = Context.Session.GetObject<PermisosUsuario>("permisos");
+}
+
+<h1>Index</h1>
+
+@if(@vPermisos.CrearUsuario == 1)
+{
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+}
+
+@if(@vPermisos.ListarUsuarios == 1)
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario_Login)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario_Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario_Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario_Telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario_Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rol_Id)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario_Login)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario_Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario_Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario_Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario_Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rol_Id)
+            </td>
+            <td>
+                @if(@vPermisos.EditarUsuario == 1)
+                {
+                @Html.ActionLink("Edit", "Edit", new { login=item.Usuario_Login })
+                }
+
+                @if(@vPermisos.EliminarUsuario == 1)
+                {
+                @Html.ActionLink("Delete", "Delete", new { login=item.Usuario_Login })
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+}

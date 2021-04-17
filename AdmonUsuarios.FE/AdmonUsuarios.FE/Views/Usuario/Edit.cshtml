@@ -1,0 +1,63 @@
+﻿@model AdmonUsuarios.FE.Models.UsuarioModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>UsuarioModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Usuario_Login" class="control-label"></label>
+                <input asp-for="Usuario_Login" class="form-control" />
+                <span asp-validation-for="Usuario_Login" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario_Nombre" class="control-label"></label>
+                <input asp-for="Usuario_Nombre" class="form-control" />
+                <span asp-validation-for="Usuario_Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario_Password" class="control-label"></label>
+                <input asp-for="Usuario_Password" class="form-control" />
+                <span asp-validation-for="Usuario_Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario_Direccion" class="control-label"></label>
+                <input asp-for="Usuario_Direccion" class="form-control" />
+                <span asp-validation-for="Usuario_Direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario_Telefono" class="control-label"></label>
+                <input asp-for="Usuario_Telefono" class="form-control" />
+                <span asp-validation-for="Usuario_Telefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario_Email" class="control-label"></label>
+                <input asp-for="Usuario_Email" class="form-control" />
+                <span asp-validation-for="Usuario_Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rol_Id" class="control-label"></label>
+                <input asp-for="Rol_Id" class="form-control" />
+                <span asp-validation-for="Rol_Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
